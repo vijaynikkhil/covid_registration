@@ -7,8 +7,8 @@ import datetime
 
 
 class Auth():
-    response = {}
-    log = Logger()
+    def __init__(self):
+        self.log = Logger()
 
     def setHeaders(self, userAgent: str, contentType: str, accept: str):
         header = {"User-Agent": userAgent,
@@ -172,16 +172,7 @@ class Auth():
                                                 ConfigKeys.date_of_Appointment = str(format(date))
                                                 is_Available = True
                                                 return is_Available
-                                                # m = '* Available on: ' + str(format(date)) + '\n' + \
-                                                #     '* Available Capacity: ' + str(session["available_capacity"]) + '\n' + \
-                                                #     '\t * Available Capacity Dose 1 : ' + str(session["available_capacity_dose1"]) + '\n' + \
-                                                #     '\t * Available Capacity Dose 2 : ' + str(session["available_capacity_dose2"]) + '\n' + \
-                                                #     '\t * Name : ' +center["name"] + '\n' + \
-                                                #     '\t * Vaccine : ' +session['vaccine'] + '\n' + \
-                                                #     '\t * Pincode : ' + str(center["pincode"]) + '\n' + \
-                                                #     '\t * Block Name : ' + center["block_name"] + '\n' + \
-                                                #     '\t * Address : ' + center["address"] + '\n' + \
-                                                #     '\t * Fee: ' + center["fee_type"] + '\n'
+
                     else:
                         self.log.Error("Error occurred while checking availability for "+
                                        str(pincode)+ " on date "+ str(date))
@@ -190,24 +181,5 @@ class Auth():
                 except Exception as ex:
                     self.log.Error("Exception occurred while checking appointment." + str(ex))
                     exit()
-
-
-
-auth = Auth()
-# auth.SendOtp(ConfigKeys.mobile_number)
-# auth.ValidateOTP(auth.response)
-# auth.getCaptcha(ConfigKeys.token)
-# url="https://cdn-api.co-vin.in/api/v2/appointment/schedule"
-# header = {"User-Agent": ConfigKeys.UserAgentHeader, "Content-Type": "application/json",
-#          "accept": "application/json"}
-# header["Authorization"] = "Bearer " + ConfigKeys.token
-# body={"center_id":470686,"session_id":"b2f82c5d-98dc-47f7-bd5d-26c4ce4624cc","beneficiaries":["73256337444720"],"slot":"09:00AM-11:00AM","captcha":ConfigKeys.captcha_txt,"dose":1}
-# response=requests.post(url=url,json=body,headers=header)
-# print(response.text)
-auth.getAvailability(ConfigKeys.pincode, ConfigKeys.min_age_limit, 1, "COVAXIN", 2)
-auth.SendOtp(ConfigKeys.mobile_number, ConfigKeys.secret)
-auth.ValidateOTP(ConfigKeys.txnId, ConfigKeys.otpSha256)
-auth.getAndValidateCaptcha(ConfigKeys.token,ConfigKeys.capcha_file)
-auth.scheduleAppt(ConfigKeys.token, ConfigKeys.center_Id, ConfigKeys.session_Id, ConfigKeys.beneficiaries,
-                  ConfigKeys.slot, ConfigKeys.captcha_txt, 1)
+        return is_Available
 
