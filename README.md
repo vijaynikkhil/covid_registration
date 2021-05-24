@@ -1,2 +1,21 @@
 # covid_registration
-A simple project that helps to search and book vaccination slots by means on Public APIs.
+A simple project that helps to search and book vaccination slots by means of Public APIs.
+
+# Technology Python 
+
+The flow of the project is follwoing:- 
+  - 👍 Update the values of config parameters in ConfigKeys.py files.
+      - **mobile_number** :- It's a string parameter, enter your mobile number, registered with conwin portal
+      - **secret** :- It's a string parameter. This specific key you need to get from cowin portal, it gets generated as a response of user authentication.
+      - **beneficiaries** :- It's a list. Login to cowin portal and view your list of beneficiaries copy the reference id for eahc of the beneficiaries. 
+      - **capcha_file** :- This can be any empty existing file.
+      - **pincode** :- A list of strings
+      - **min_age_limit** :- minimum age limit for which slots are required.
+ 
+ Once values of these params are updated you may start the execution of the code from Executor.py file.
+ 
+ - The code first check for available slots for the dates and pincode.
+ - If any slots matches, it sends OTP on the mobile number
+ - Enter the OTP on IDE's console
+ - Then when asked on the file **capcha_file** either in IDE or in browser and provide the captcha.
+ - 👍 you are good.
