@@ -8,19 +8,27 @@ class ConfigKeys():
 
     user_agent_header = ""
 
-    pincode = ["325202"]
-    min_age_limit = 45
+    pincode = ["325202"] # Enter pincode your choice
+    min_age_limit = 45 # 18, or 45
 
-    mobile_number = "9579247009"
+    # Enter a 10 digit mobile number, registered on cowin portal.
+    mobile_number = "****7009"
+
+    # The secret you need to copy from web developer, when you login to cowin portal.
     secret = "U2FsdGVkX18Nla7q++hCUFJ2a7uaPKL99513HSKXUfiPcbSSnVw9jEtlJ5EaW3hWfd7pjYDID5GW0vjE598sOg=="
-    beneficiaries = ["73256337444720"]
 
+    # Login to cowin portal and view your list of beneficiaries copy the reference id for eahc of the beneficiaries.
+    beneficiaries = ["73256337444812"]
+
+    # These headers are used to make server to trust us that we are coming from browers.
     UserAgentHeader = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
     ContentTypeHeader = "application/json"
     AcceptHeader = "application/json"
 
     token=""
     captcha_txt=""
+
+    # Enther the file path you want to save captcha.
     capcha_file = "/Users/nv733055/Box/pycharm/Cowin/Config/captcha.svg"
 
     txnId = ""
