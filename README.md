@@ -17,7 +17,7 @@ The flow of the project is follwoing:-
  - The code first check for available slots for the dates and pincode.
  - If any slots matches, it sends OTP on the mobile number
  - Enter the OTP on IDE's console
- - Then when asked on the file **capcha_file** either in IDE or in browser and provide the captcha.
+ - When asked for captcha open the file **capcha_file** either in IDE or in browser and provide the captcha.
  - 👍 you are good.
 
 # Sample console logs
