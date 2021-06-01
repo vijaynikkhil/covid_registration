@@ -10,10 +10,12 @@ class Auth():
     def __init__(self):
         self.log = Logger()
 
-    def setHeaders(self, userAgent: str, contentType: str, accept: str):
+    def setHeaders(self, userAgent: str, contentType: str, accept: str,origin: str,referer: str):
         header = {"User-Agent": userAgent,
                   "Content-Type": contentType,
-                  "accept": accept}
+                  "accept": accept,
+                  "origin": origin,
+                 "referer": referer}
         return header
 
     def SendOtp(self, mobile_number: str, secret: str):
@@ -29,7 +31,9 @@ class Auth():
         self.log.Info("Preparing headers for SendOTP request.")
         header = self.setHeaders(ConfigKeys.UserAgentHeader,
                                  ConfigKeys.ContentTypeHeader,
-                                 ConfigKeys.AcceptHeader)
+                                 ConfigKeys.AcceptHeader,
+                                 ConfigKeys.Origin,
+                                 ConfigKeys.Referer)
         try:
             self.log.Info("Sending OTP")
             authentication_response = requests.post(url=request_url, json=send_OTP_request_body, headers=header)
@@ -59,7 +63,9 @@ class Auth():
         self.log.Info("Preparing headers for validate OTP request.")
         header = self.setHeaders(ConfigKeys.UserAgentHeader,
                                  ConfigKeys.ContentTypeHeader,
-                                 ConfigKeys.AcceptHeader)
+                                 ConfigKeys.AcceptHeader,
+                                 ConfigKeys.Origin,
+                                 ConfigKeys.Referer)
 
         validate_otp_body = {"txnId": txnID, "otp": otpSha256}
         try:
@@ -85,7 +91,9 @@ class Auth():
         self.log.Info("Preparing headers for get captcha request.")
         header = self.setHeaders(ConfigKeys.UserAgentHeader,
                                  ConfigKeys.ContentTypeHeader,
-                                 ConfigKeys.AcceptHeader)
+                                 ConfigKeys.AcceptHeader,
+                                 ConfigKeys.Origin,
+                                 ConfigKeys.Referer)
         header["Authorization"] = "Bearer " + token
 
         try:
@@ -115,7 +123,9 @@ class Auth():
         self.log.Info("Preparing headers for schedule appointment request.")
         header = self.setHeaders(ConfigKeys.UserAgentHeader,
                                  ConfigKeys.ContentTypeHeader,
-                                 ConfigKeys.AcceptHeader)
+                                 ConfigKeys.AcceptHeader,
+                                 ConfigKeys.Origin,
+                                 ConfigKeys.Referer)
         header["Authorization"] = "Bearer " + token
 
         self.log.Info("Preparing body for schedule appointment request.")
@@ -147,7 +157,9 @@ class Auth():
         self.log.Info("Preparing headers for get availability request.")
         header = self.setHeaders(ConfigKeys.UserAgentHeader,
                                  ConfigKeys.ContentTypeHeader,
-                                 ConfigKeys.AcceptHeader)
+                                 ConfigKeys.AcceptHeader,
+                                 ConfigKeys.Origin,
+                                 ConfigKeys.Referer)
         base = datetime.datetime.today()
         date_list = [base + datetime.timedelta(days=x) for x in range(check_for_days)]
         date_str = [x.strftime("%d-%m-%Y") for x in date_list]
