@@ -23,12 +23,14 @@ class ConfigKeys():
     # These headers are used to make server to trust us that we are coming from browers.
     UserAgentHeader = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
     ContentTypeHeader = "application/json"
-    AcceptHeader = "application/json"
+    AcceptHeader = "application/json, text/plain, */*"
+    Origin = "https://selfregistration.cowin.gov.in"
+    Referer = "https://selfregistration.cowin.gov.in/"
 
     token=""
     captcha_txt=""
 
-    # Enther the file path you want to save captcha.
+    # Enter the file path you want to save captcha
     capcha_file = "/Users/nv733055/Box/pycharm/Cowin/Config/captcha.svg"
 
     txnId = ""
